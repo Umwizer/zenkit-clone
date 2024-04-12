@@ -14,6 +14,7 @@ const corsOptions = {
 }
 
 const app = express();
+const port = process.env.PORT || 3000
 app.use(cors());
 app.use(express.json());
 app.use('/task', taskRouter);
@@ -26,8 +27,8 @@ mongoose.connect("mongodb://localhost:27017/zenkit")
     console.log(err);
 })
 
-app.listen(configurations.PORT, () => {
-    console.log(`Server is running on port ${configurations.PORT}`);
+app.listen(port , () => {
+    console.log(`Server is running on port ${port}`);
 })
 
 app.use(ErrorHandler);
